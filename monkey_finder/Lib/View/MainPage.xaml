@@ -46,6 +46,7 @@
         <Button Text="Get closest monkey"
                 Grid.Column="1"
                 Grid.Row="1"
+                Command="{Binding GetClosestMonkeyCommand}"
                 Margin="8"></Button>
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"

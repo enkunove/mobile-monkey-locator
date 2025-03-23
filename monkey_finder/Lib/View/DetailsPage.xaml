@@ -19,11 +19,15 @@
                        WidthRequest="160"
                        CornerRadius="80"
                        HorizontalOptions="Center"
+                       IsClippedToBounds="False"
                        Margin="0,80,0,0"
                        Padding="0">
-                    <Image Source="{Binding Monkey.Image}"></Image>
+                    <Image Source="{Binding Monkey.Image}" Aspect="AspectFill"></Image>
                 </Frame>
             </Grid>
+            <VerticalStackLayout Padding="10" Spacing="10">
+                
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
