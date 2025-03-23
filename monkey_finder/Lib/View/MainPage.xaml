@@ -8,31 +8,46 @@
              Title="{Binding Title}"
              >
 
-    <CollectionView>
-        <CollectionView.ItemsSource>
-            <x:Array Type ="{x:Type model:MonkeyModel}">
-                <model:MonkeyModel Name="A" Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg" Location="Africa Asia"></model:MonkeyModel>
-                <model:MonkeyModel Name="B" Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg" Location="Africa Asia"></model:MonkeyModel>
-                <model:MonkeyModel Name="A" Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg" Location="Africa Asia"></model:MonkeyModel>
-                <model:MonkeyModel Name="A" Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg" Location="Africa Asia"></model:MonkeyModel>
-                <model:MonkeyModel Name="A" Image="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg" Location="Africa Asia"></model:MonkeyModel>
+    <Grid ColumnDefinitions="*, *" ColumnSpacing="5"
+          RowDefinitions="*, Auto" RowSpacing="5"
+          Padding="10">
+        <CollectionView Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Monkeys}"
+                        SelectionMode="None"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:MonkeyModel">
+                
 
-            </x:Array>
-        </CollectionView.ItemsSource>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:MonkeyModel">
-                <HorizontalStackLayout Spacing="10" Padding="8">
-                    <Image Source="{Binding Image}"
-                           HeightRequest="100"
-                           WidthRequest="100"
-                           Aspect="AspectFill"></Image>
-                    <VerticalStackLayout Spacing="4" VerticalOptions="Center">
-                        <Label Text="{Binding Name}" FontSize="24"></Label>
-                        <Label Text="{Binding Location}" FontSize="16"></Label>
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                        <Border HeightRequest="125">
+                            <Grid ColumnDefinitions="Auto, *"
+                                  RowDefinitions="*,*"
+                                  ColumnSpacing="15">
+                                <Image Source="{Binding Image}" Grid.RowSpan="2"></Image>
+                                <Label Text="{Binding Name}" Grid.Column="1"></Label>
+                                <Label Text="{Binding Location}"  Grid.Column="1" Grid.Row="1"></Label>
+                            </Grid>
+                        </Border>
+                
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+        <Button Text="Load Monkeys"
+                Grid.Row="1"
+                Margin="8"
+                Command="{Binding GetMonkeysCommand}"
+                IsEnabled="{Binding IsNotBusy}"></Button>
+        <Button Text="Get closest monkey"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="8"></Button>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           Grid.ColumnSpan="2"
+                           Grid.RowSpan="2"></ActivityIndicator>
+    </Grid>
 
 </ContentPage>

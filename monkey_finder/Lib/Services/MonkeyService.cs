@@ -1,4 +1,4 @@
-﻿using monkey_finder.Model;
+﻿using monkey_finder.Lib.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace monkey_finder.Services
+namespace monkey_finder.Lib.Services
 {
     public class MonkeyService
     {
@@ -29,7 +29,7 @@ namespace monkey_finder.Services
             {
                 monkeyList = await response.Content.ReadFromJsonAsync<List<MonkeyModel>>();
             }
-            return [];
+            return monkeyList;
         }
 
     }

@@ -1,9 +1,9 @@
-﻿using monkey_finder.Model;
-using monkey_finder.Services;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using monkey_finder.Lib.Model;
+using monkey_finder.Lib.Services;
 
 namespace monkey_finder.ViewModel;
 
@@ -29,12 +29,14 @@ public partial class MonkeysViewModel : BaseViewModel
             IsBusy = true;
 
             var monkeys = await _monkeyService.GetMonkeys();
-            Monkeys.Clear();
-
-            foreach (var m in monkeys)
+            await MainThread.InvokeOnMainThreadAsync(() =>
             {
-                Monkeys.Add(m);
-            }
+                Monkeys.Clear();
+                foreach (var m in monkeys)
+                {
+                    Monkeys.Add(m);
+                }
+            });
         }
         catch (Exception e)
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace monkey_finder.Model
+namespace monkey_finder.Lib.Model
 {
     public class MonkeyModel
     {

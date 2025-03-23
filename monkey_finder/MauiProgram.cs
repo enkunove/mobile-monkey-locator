@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using monkey_finder.Services;
+using monkey_finder.Lib.Services;
 using monkey_finder.ViewModel;
 
 
-namespace monkey_finder;
+namespace monkey_finder.Lib;
 
 public static class MauiProgram
 {
