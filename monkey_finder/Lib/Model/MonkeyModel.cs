@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace monkey_finder.Model
 {
-    class MonkeyModel
+    public class MonkeyModel
     {
         public string Name { get; set; }
         public string Location { get; set; }
