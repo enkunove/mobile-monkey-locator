@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using monkey_finder.Lib.Model;
 using monkey_finder.Lib.Services;
+using monkey_finder.View;
 
 namespace monkey_finder.ViewModel;
 
@@ -17,6 +18,16 @@ public partial class MonkeysViewModel : BaseViewModel
     {
         Title = "Monkeys Finder";
         _monkeyService = monkeyService;
+    }
+
+    [RelayCommand]
+    public async Task GoToDetailsAsync(MonkeyModel monkey)
+    {
+        if (monkey is null)
+            return;
+        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, dynamic>() {
+            { "Monkey", monkey}
+        });
     }
 
     [RelayCommand]
