@@ -25,6 +25,11 @@
                     <Image Source="{Binding Monkey.Image}" Aspect="AspectFill"></Image>
                 </Frame>
             </Grid>
+            <Button Text="Show on map"
+                    Command="{Binding OpenMapCommand}"
+                    WidthRequest="200"
+                    Padding="20"
+                    Margin="8"></Button>
             <VerticalStackLayout Padding="10" Spacing="10">
                 
             </VerticalStackLayout>
